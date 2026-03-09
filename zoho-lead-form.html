@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zoho Lead Form - Horoz Stil</title>
+  <style>
+    :root {
+      --brand-red: #c2191f;
+      --text: #1f252c;
+      --muted: #6b7684;
+      --border: #d8dee6;
+      --bg: #f4f5f7;
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.4;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 20px 64px;
+    }
+
+    .top {
+      margin-bottom: 32px;
+    }
+
+    .eyebrow {
+      color: var(--brand-red);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.08;
+    }
+
+    .subtitle {
+      color: #374553;
+      margin-top: 14px;
+      max-width: 760px;
+      font-size: 17px;
+    }
+
+    #crmWebToEntityForm.crmWebToEntityForm {
+      background: transparent !important;
+      color: inherit !important;
+      max-width: none !important;
+      padding: 0 !important;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 420px) minmax(340px, 1fr);
+      gap: 44px;
+      align-items: start;
+    }
+
+    .media-box {
+      background: var(--brand-red);
+      border-radius: 16px;
+      aspect-ratio: 4 / 3;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 52px;
+      letter-spacing: .04em;
+      box-shadow: 0 14px 36px rgba(194, 25, 31, 0.18);
+    }
+
+    .form-panel {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid #edf0f4;
+      box-shadow: 0 10px 25px rgba(18, 32, 53, 0.06);
+      padding: 28px;
+    }
+
+    .form-title {
+      margin: 0;
+      font-size: clamp(30px, 3vw, 42px);
+      line-height: 1.1;
+    }
+
+    .form-intro {
+      margin: 14px 0 28px;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 560px;
+    }
+
+    .fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(180px, 1fr));
+      gap: 14px;
+    }
+
+    .zcwf_row {
+      margin: 0 !important;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .zcwf_col_lab,
+    .zcwf_col_fld {
+      width: 100% !important;
+      float: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .zcwf_col_lab label {
+      font-size: 13px;
+      color: #5a6675;
+      font-weight: 600;
+      font-family: inherit !important;
+    }
+
+    .zcwf_col_fld input[type="text"],
+    .zcwf_col_fld select,
+    .zcwf_col_fld textarea {
+      width: 100% !important;
+      height: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--border) !important;
+      padding: 0 14px;
+      font-size: 14px;
+      color: var(--text);
+      background: #fff;
+      font-family: inherit;
+      transition: border-color .2s, box-shadow .2s;
+      float: none !important;
+    }
+
+    .zcwf_col_fld input:focus,
+    .zcwf_col_fld select:focus,
+    .zcwf_col_fld textarea:focus {
+      outline: none;
+      border-color: #96afde !important;
+      box-shadow: 0 0 0 4px rgba(52, 119, 235, 0.12);
+    }
+
+    .zcwf_col_help { display: none !important; }
+
+    .actions {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .zcwf_button {
+      height: 44px;
+      border-radius: 10px !important;
+      border: 1px solid transparent !important;
+      padding: 0 22px !important;
+      font-size: 14px !important;
+      font-weight: 600;
+      cursor: pointer;
+      max-width: none !important;
+    }
+
+    .formsubmit.zcwf_button {
+      background: var(--brand-red) !important;
+      color: var(--white) !important;
+      box-shadow: 0 10px 20px rgba(194, 25, 31, .25);
+    }
+
+    input[type="reset"].zcwf_button {
+      background: #fff !important;
+      color: #405063 !important;
+      border-color: var(--border) !important;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    @media (max-width: 960px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      .media-box {
+        max-width: 520px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .fields { grid-template-columns: 1fr; }
+      .page { padding: 32px 16px 56px; }
+      .form-panel { padding: 20px; }
+      .actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="top">
+      <p class="eyebrow">KARİYER</p>
+      <h1>İş Başvurusu</h1>
+      <p class="subtitle">Başvurunuzun doğru değerlendirilmesi için formu özenle doldurmanızı rica ederiz.</p>
+    </section>
+
+    <div id='crmWebToEntityForm' class='zcwf_lblTopBottom crmWebToEntityForm' style='background-color: #C2191F;color: #FFFFFF;max-width: 900px;'>
+      <META HTTP-EQUIV='content-type' CONTENT='text/html;charset=UTF-8'>
+      <form id='webform938755000000533173' action='https://crm.zoho.eu/crm/WebToLeadForm' name=WebToLeads938755000000533173 method='POST' onSubmit='javascript:document.charset="UTF-8"; return checkMandatory938755000000533173()' accept-charset='UTF-8'>
+        <input type='text' style='display:none;' name='xnQsjsdp' value='47d58ffae9b2af3ed14e0c014e30215d01e9a3da8225bbfb63734e1f7db59fcf'>
+        </input>
+        <input type='hidden' name='zc_gad' id='zc_gad' value=''>
+        </input>
+        <input type='text' style='display:none;' name='xmIwtLD' value='b81032997ed519b35b2c62c619056366a34fdd5ce45f185749c323b3dc2b1062faea47b5bcc4b6270bee0dd1ada256bc'>
+        </input>
+        <input type='text' style='display:none;' name='actionType' value='TGVhZHM='>
+        </input>
+        <input type='text' style='display:none;' name='returnURL' value='https://example.com/tesekkurler'>
+        </input>
+        <!-- Do not remove this code. -->
+
+        <div class="layout">
+          <div class="media-box" aria-hidden="true">4:3</div>
+
+          <section class="form-panel">
+            <p class="eyebrow">KARİYER</p>
+            <h2 class="form-title">Başvuru Süreci Hakkında</h2>
+            <p class="form-intro">Seçme yerleştirmede ilk aşama olan başvuru formu ile işin gerektirdiği yetkinliklere (bilgi, beceri ve davranışlar) sahip adaylara ulaşarak eşit fırsat tanıyabilmek öncelikli amacımızdır.</p>
+
+            <div class="fields">
+              <div class='zcwf_row'>
+                <div class='zcwf_col_lab'>
+                  <label for='Company'>Şirket <span style='color:red;'>*</span></label>
+                </div>
+                <div class='zcwf_col_fld'>
+                  <input type='text' id='Company' aria-required='true' aria-label='Company' name='Company' aria-valuemax='200' maxlength='200' placeholder='Şirket girin'>
+                  </input>
+                  <div class='zcwf_col_help'></div>
+                </div>
+              </div>
+
+              <div class='zcwf_row'>
+                <div class='zcwf_col_lab'>
+                  <label for='Last_Name'>Soyadı <span style='color:red;'>*</span></label>
+                </div>
+                <div class='zcwf_col_fld'>
+                  <input type='text' id='Last_Name' aria-required='true' aria-label='Last Name' name='Last Name' aria-valuemax='80' maxlength='80' placeholder='Soyadınızı girin'>
+                  </input>
+                  <div class='zcwf_col_help'></div>
+                </div>
+              </div>
+
+              <div class='zcwf_row'>
+                <div class='zcwf_col_lab'><label for='Email'>E-posta</label></div>
+                <div class='zcwf_col_fld'>
+                  <input type='text' ftype='email' autocomplete='false' id='Email' aria-required='false' aria-label='Email' name='Email' aria-valuemax='100' crmlabel='' maxlength='100' placeholder='E-posta girin'>
+                  </input>
+                  <div class='zcwf_col_help'></div>
+                </div>
+              </div>
+
+              <div class='zcwf_row'>
+                <div class='zcwf_col_lab'><label for='Website'>Web sitesi</label></div>
+                <div class='zcwf_col_fld'>
+                  <input type='text' id='Website' aria-required='false' aria-label='Website' name='Website' aria-valuemax='255' maxlength='255' placeholder='Web sitesi girin'>
+                  </input>
+                  <div class='zcwf_col_help'></div>
+                </div>
+              </div>
+
+              <div class='zcwf_row'>
+                <div class='zcwf_col_lab'><label for='Rating'>Derece</label></div>
+                <div class='zcwf_col_fld'>
+                  <select class='zcwf_col_fld_slt' role='combobox' aria-expanded='false' aria-haspopup='listbox' id='Rating' onChange='addAriaSelected938755000000533173()' aria-required='false' aria-label='Rating' name='Rating'>
+                    <option value='-None-'>Seçiniz</option>
+                    <option value='Kazanılan'>Kazanılan</option>
+                    <option value='Aktif'>Aktif</option>
+                    <option value='Başarısız Oldu'>Başarısız Oldu</option>
+                    <option value='Proje İptal'>Proje İptal</option>
+                    <option value='Kapat'>Kapat</option>
+                  </select>
+                  <div class='zcwf_col_help'></div>
+                </div>
+              </div>
+
+              <div class='zcwf_row'>
+                <div class='zcwf_col_lab'><label for='Lead_Source'>Müşteri Adayı Kaynağı</label></div>
+                <div class='zcwf_col_fld'>
+                  <select class='zcwf_col_fld_slt' role='combobox' aria-expanded='false' aria-haspopup='listbox' id='Lead_Source' onChange='addAriaSelected938755000000533173()' aria-required='false' aria-label='Lead Source' name='Lead Source'>
+                    <option value='-None-'>Seçiniz</option>
+                    <option value='Reklam'>Reklam</option>
+                    <option value='Direkt Tel. Arama'>Direkt Tel. Arama</option>
+                    <option value='Çalışan Yönlendirmesi'>Çalışan Yönlendirmesi</option>
+                    <option value='Dışarıdan Yönlendirme'>Dışarıdan Yönlendirme</option>
+                    <option value='Ortak'>Ortak</option>
+                    <option value='Çevrimiçi Mağaza'>Çevrimiçi Mağaza</option>
+                    <option value='Halkla İlişkiler'>Halkla İlişkiler</option>
+                    <option value='Ticari Fuar'>Ticari Fuar</option>
+                    <option value='Satış E-Posta Diğer Adı'>Satış E-Posta Diğer Adı</option>
+                    <option value='Seminer Ortağı'>Seminer Ortağı</option>
+                    <option value='Facebook'>Facebook</option>
+                    <option value='İç Seminer'>İç Seminer</option>
+                    <option value='X (Twitter)'>X (Twitter)</option>
+                    <option value='Web’den İndirme'>Web’den İndirme</option>
+                    <option value='İnternette Araştırma'>İnternette Araştırma</option>
+                    <option value='Anlık Mesajlaşma'>Anlık Mesajlaşma</option>
+                  </select>
+                  <div class='zcwf_col_help'></div>
+                </div>
+              </div>
+
+              <input type='text' type='hidden' style='display: none;' name='aG9uZXlwb3Q' value=''/>
+
+              <div class='zcwf_row actions'>
+                <div class='zcwf_col_lab'></div>
+                <div class='zcwf_col_fld' style="display:flex; gap:12px;">
+                  <input type='submit' id='formsubmit' role='button' class='formsubmit zcwf_button' value='Gönder' aria-label='Gönder' title='Gönder'>
+                  <input type='reset' class='zcwf_button' role='button' name='reset' value='Sıfırla' aria-label='Sıfırla' title='Sıfırla'>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <script>
+          function addAriaSelected938755000000533173(){
+            var optionElem = event.target;
+            var previousSelectedOption = optionElem.querySelector('[aria-selected=true]');
+            if (previousSelectedOption) {
+              previousSelectedOption.removeAttribute('aria-selected');
+            }
+            optionElem.querySelectorAll('option')[optionElem.selectedIndex].ariaSelected = 'true';
+          }
+          function validateEmail938755000000533173(){
+            var form = document.forms['WebToLeads938755000000533173'];
+            var emailFld = form.querySelectorAll('[ftype=email]');
+            var i;
+            for(i = 0; i < emailFld.length; i++ ) {
+              var emailVal = emailFld[i].value;
+              if ((emailVal.replace(/^\s+|\s+$/g,'')).length != 0) {
+                var atpos = emailVal.indexOf('@');
+                var dotpos = emailVal.lastIndexOf('.');
+                if(atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= emailVal.length) {
+                  alert('Lütfen geçerli bir e-posta adresi belirtin ');
+                  emailFld[i].focus();
+                  return false;
+                }
+              }
+            }
+            return true;
+          }
+          function checkMandatory938755000000533173(){
+            var mndFileds = new Array('Company', 'Last Name');
+            var fldLangVal = new Array('Şirket', 'Soyadı');
+            for (i = 0; i < mndFileds.length; i++ ) {
+              var fieldObj = document.forms['WebToLeads938755000000533173'][mndFileds[i]];
+              if (fieldObj) {
+                if(((fieldObj.value).replace(/^\s+|\s+$/g,'')).length == 0) {
+                  if (fieldObj.type == 'file') {
+                    alert('Lütfen karşıya yüklemek için bir dosya seçin.');
+                    fieldObj.focus();
+                    return false;
+                  }
+                  alert(fldLangVal[i] + ' boş olamaz.');
+                  fieldObj.focus();
+                  return false;
+                } else if (fieldObj.nodeName == 'SELECT') {
+                  if (fieldObj.options[fieldObj.selectedIndex].value == '-None-') {
+                    alert(fldLangVal[i] + ' hiçbiri olamaz.');
+                    fieldObj.focus();
+                    return false;
+                  }
+                } else if (fieldObj.type == 'checkbox') {
+                  if (fieldObj.checked == false) {
+                    alert('Please accept  ' + fldLangVal[i]);
+                    fieldObj.focus();
+                    return false;
+                  }
+                }
+                try {
+                  if (fieldObj.name == 'Last Name') {
+                    name = fieldObj.value;
+                  }
+                } catch (e) {}
+              }
+            }
+            if (!validateEmail938755000000533173()) {
+              return false;
+            }
+            var urlparams = new URLSearchParams(window.location.search);
+            if (urlparams.has('service') && (urlparams.get('service') === 'smarturl')) {
+              var webform = document.getElementById('webform938755000000533173');
+              var service = urlparams.get('service');
+              var smarturlfield = document.createElement('input');
+              smarturlfield.setAttribute('type', 'hidden');
+              smarturlfield.setAttribute('value', service);
+              smarturlfield.setAttribute('name', 'service');
+              webform.appendChild(smarturlfield);
+            }
+            document.querySelector('.crmWebToEntityForm .formsubmit').setAttribute('disabled', true);
+          }
+          function tooltipShow938755000000533173(el){
+            var tooltip = el.nextElementSibling;
+            var tooltipDisplay = tooltip.style.display;
+            if (tooltipDisplay == 'none') {
+              var allTooltip = document.getElementsByClassName('zcwf_tooltip_over');
+              for (i = 0; i < allTooltip.length; i++ ) {
+                allTooltip[i].style.display = 'none';
+              }
+              tooltip.style.display = 'block';
+            } else {
+              tooltip.style.display = 'none';
+            }
+          }
+        </script>
+        <!-- Do not remove this --- Analytics Tracking code starts -->
+        <script id='wf_anal' src='https://crm.zohopublic.eu/crm/WebFormAnalyticsServeServlet?rid=e15e7daa293071ac5bdefd428b4da9d58d82cd488899b4ea1d284ca4ccfec71fc1349169ec55c278de18d982d389413agid07d2c38a2194b9d32c0fac32c96931689e8871ec175e8584bf2702b1b141b572gidc2f4151c009721904a0fc9e756f52b0ff6d81fe531900d4f5a7500b851800ac7gid9f3047ca0dda3eb4f80640156d319da69d0ac45e98a9ac61047b2d44cfa7b776&tw=cb1f58fc12018a6545657872eb02b20bd5d236d75f503a35a1ed48761ef9f639'>
+        </script>
+        <!-- Do not remove this --- Analytics Tracking code ends. -->
+      </form>
+    </div>
+  </main>
+</body>
+</html>
